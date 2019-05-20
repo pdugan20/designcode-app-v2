@@ -93,7 +93,6 @@ class ModalLogin extends React.Component {
         try {
             const name = await AsyncStorage.getItem('name');
             if (name !== null) {
-                console.log(name);
                 this.props.updateName(name);
             }
         } catch (error) {}
@@ -128,17 +127,17 @@ class ModalLogin extends React.Component {
     };
 
     focusEmail = () => {
-        this.setState({
-            iconEmail: require('../assets/icon-email-animated.gif'),
-            iconPassword: require('../assets/icon-password.png')
-        });
+        // this.setState({
+        //     iconEmail: require('../assets/icon-email-animated.gif'),
+        //     iconPassword: require('../assets/icon-password.png')
+        // });
     };
 
     focusPassword = () => {
-        this.setState({
-            iconEmail: require('../assets/icon-email.png'),
-            iconPassword: require('../assets/icon-password-animated.gif')
-        });
+        // this.setState({
+        //     iconEmail: require('../assets/icon-email.png'),
+        //     iconPassword: require('../assets/icon-password-animated.gif')
+        // });
     };
 
     tapBackground = () => {
@@ -170,6 +169,8 @@ class ModalLogin extends React.Component {
                     <Logo source={require('../assets/logo-dc.png')} />
                     <Text>Start Learning. Access Pro Content.</Text>
                     <TextInput
+                        autoCapitalize={'none'}
+                        autoCorrect={false}
                         onChangeText={email => this.setState({ email })}
                         placeholder='Email'
                         value={this.state.email}
