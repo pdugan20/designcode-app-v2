@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Markdown from "react-native-showdown";
+import Markdown from 'react-native-showdown';
 import { Icon } from 'expo';
 import {
     Button,

@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import ModalLogin from '../components/ModalLogin';
 import ApolloClient from 'apollo-boost';
 import gql from 'graphql-tag';
-import { NotificationIcon } from '../Icons';
+import { NotificationIcon } from '../components/Icons';
 import { connect } from 'react-redux';
 import { Query } from 'react-apollo';
 import {
