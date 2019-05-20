@@ -13,12 +13,12 @@ import { connect } from 'react-redux';
 import { Query } from 'react-apollo';
 import {
     ScrollView,
-    SafeAreaView,
     Animated,
     TouchableOpacity,
     Easing,
     StatusBar,
 } from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
 
 const CardsQuery = gql`
     {
@@ -136,8 +136,10 @@ class HomeScreen extends React.Component {
                     transform: [{ scale: this.state.scale }],
                     opacity: this.state.opacity
                 }}>
-                    <SafeAreaView>
-                        <ScrollView style={{ height: '100%'}} >
+                    <SafeAreaView
+                        style={{ flex: 1 }}
+                        forceInset={{ bottom: 'never'}}>
+                        <ScrollView style={{ flex: 1}} >
                             <TitleBar>
                                 <TouchableOpacity
                                     onPress={this.handleAvatar}
@@ -176,12 +178,10 @@ class HomeScreen extends React.Component {
                                 horizontal={true}
                                 style={{paddingBottom:30}}
                                 showsHorizontalScrollIndicator={false}>
-
                                 <Query query={CardsQuery}>
                                     {({ loading, error, data }) => {
                                         if (loading) return <Message>Loading...</Message>;
                                         if (error) return <Message>Error...</Message>;
-                                        // console.log(data.cardsCollection.items);
                                         return (
                                             <CardsContainer>
                                                 {data.cardsCollection.items.map((card, index) => (
@@ -316,37 +316,6 @@ const logos = [
     {
         image: require('../assets/logo-sketch.png'),
         text: 'Sketch'
-    }
-];
-
-const cards = [
-    {
-        title: 'React Native for Designers',
-        image: require('../assets/background11.jpg'),
-        subtitle: 'React Native',
-        caption: '1 of 12 sections',
-        logo: require('../assets/logo-react.png')
-    },
-    {
-        title: 'Styled Components',
-        image: require('../assets/background12.jpg'),
-        subtitle: 'React Native',
-        caption: '2 of 12 sections',
-        logo: require('../assets/logo-react.png')
-    },
-    {
-        title: 'Props and Icons',
-        image: require('../assets/background13.jpg'),
-        subtitle: 'React Native',
-        caption: '3 of 12 sections',
-        logo: require('../assets/logo-react.png')
-    },
-    {
-        title: 'Static Data and Loop',
-        image: require('../assets/background14.jpg'),
-        subtitle: 'React Native',
-        caption: '4 of 12 sections',
-        logo: require('../assets/logo-react.png')
     }
 ];
 
