@@ -55,9 +55,7 @@ class ModalLogin extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log('test');
         if (this.props.action === 'openLogin') {
-            console.log('open');
             Animated.timing(this.state.top, {
                 toValue: 0,
                 duration: 0
