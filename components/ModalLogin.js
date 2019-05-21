@@ -14,6 +14,7 @@ import { BlurView } from 'expo';
 import Success from '../components/Success';
 import Loading from '../components/Loading';
 import firebase from '../components/Firebase';
+import { saveState } from "./AsyncStorage";
 
 const screenHeight = Dimensions.get('window').height;
 
@@ -114,7 +115,8 @@ class ModalLogin extends React.Component {
                 this.setState({ isLoading: false });
                 if (response) {
                     this.setState({ isSuccessful: true });
-                    this.storeName(response.user.email);
+                    // this.storeName(response.user.email);
+                    this.fetchUser()
                     this.props.updateName(response.user.email);
                     setTimeout(() => {
                         Alert.alert('Congrats', 'You logged in.');
@@ -123,6 +125,22 @@ class ModalLogin extends React.Component {
                         this.setState({ isSuccessful: false });
                     }, 1000);
                 }
+            });
+    };
+
+    fetchUser = () => {
+        fetch("https://uifaces.co/api?limit=1&random", {
+            headers: new Headers({
+                "X-API-KEY": "eeaafbe81657073cd70ac6e3de1bd6"
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                const name = response[0].name;
+                const avatar = response[0].photo;
+                saveState({ name, avatar });
+                this.props.updateName(name);
+                this.props.updateAvatar(avatar);
             });
     };
 

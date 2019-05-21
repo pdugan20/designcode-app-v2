@@ -13,7 +13,7 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain", 
+      "resizeMode": "contain",
       "backgroundColor": "#f0f3f5"
     },
     "updates": {
@@ -24,10 +24,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.designcode.DesignCodeExpo"
+      "bundleIdentifier": "me.patdugan.DesignCode"
     },
     "android": {
-      "package": "io.designcode.DesignCodeExpo"
+      "package": "me.patdugan.DesignCode"
     }
   }
 }
