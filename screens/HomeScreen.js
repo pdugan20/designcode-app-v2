@@ -139,7 +139,9 @@ class HomeScreen extends React.Component {
                     <SafeAreaView
                         style={{ flex: 1 }}
                         forceInset={{ bottom: 'never'}}>
-                        <ScrollView style={{ flex: 1}} >
+                        <ScrollView
+                            style={{ flex: 1}}
+                            showsVerticalScrollIndicator={false}>
                             <TitleBar>
                                 <TouchableOpacity
                                     onPress={this.handleAvatar}
